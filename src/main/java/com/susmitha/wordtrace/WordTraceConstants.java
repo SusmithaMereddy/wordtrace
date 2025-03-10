@@ -1,4 +1,3 @@
-
 package com.susmitha.wordtrace;
 public class WordTraceConstants {
     public static final String Error_InsufficientArguments = "Please provide both the file path and the word to search";

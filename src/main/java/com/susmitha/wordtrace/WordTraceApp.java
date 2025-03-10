@@ -1,7 +1,5 @@
-
 package com.susmitha.wordtrace;
 import java.io.File;
-
 public class WordTraceApp {
     public static void main(String[] args) {
         if (args.length < 2) {
