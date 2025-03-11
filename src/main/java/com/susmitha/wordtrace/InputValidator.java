@@ -15,7 +15,6 @@ public class InputValidator {
             return WordTraceConstants.ERROR_INVALID_FILE;
         }
         if (!inputFilePath.endsWith(WordTraceConstants.FILE_EXTENSION_TXT) && !inputFilePath.endsWith(WordTraceConstants.FILE_EXTENSION_JSON)) {
-            System.out.println("Invalid file type. Only " + WordTraceConstants.FILE_EXTENSION_TXT + " and " + WordTraceConstants.FILE_EXTENSION_JSON + " are allowed");
             return "Invalid file type. Only " + WordTraceConstants.FILE_EXTENSION_TXT + " and "  + WordTraceConstants.FILE_EXTENSION_JSON + " are allowed";
         }
         return "";
