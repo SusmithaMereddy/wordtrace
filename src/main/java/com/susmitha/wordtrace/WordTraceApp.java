@@ -1,9 +1,11 @@
 package com.susmitha.wordtrace;
+
 import com.susmitha.wordtraceconstants.WordTraceConstants;
+
 public class WordTraceApp {
     public static void main(String[] args) {
         String validationMessage = InputValidator.validateInputs(args);
-        if(!validationMessage.isEmpty()){
+        if (!validationMessage.isEmpty()) {
             System.out.println(validationMessage);
             return;
         }
