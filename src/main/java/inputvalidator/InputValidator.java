@@ -7,7 +7,6 @@ import java.io.File;
 /**
  * This class provides methods for validating input arguments.It ensures correct argument count, file existence and valid file types
  */
-
 public class InputValidator {
     /**
      * Validates that exactly two arguments are provided
@@ -44,7 +43,6 @@ public class InputValidator {
      * @param inputFilePath
      * @return
      */
-
     public String validateFileType(String inputFilePath) {
         if (!inputFilePath.endsWith(WordTraceConstants.FILE_EXTENSION_TXT) && !inputFilePath.endsWith(WordTraceConstants.FILE_EXTENSION_JSON)) {
             return WordTraceConstants.INVALID_FILE_TYPE;
@@ -58,7 +56,6 @@ public class InputValidator {
      * @param args
      * @return
      */
-
     public String validateInputs(String[] args) {
         String message;
         message = validateArguments(args);

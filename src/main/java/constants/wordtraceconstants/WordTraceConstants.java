@@ -3,7 +3,6 @@ package constants.wordtraceconstants;
 /**
  * This class defines constant values used across the WordTrace Application
  */
-
 public class WordTraceConstants {
     public static final String ERROR_INSUFFICIENT_ARGUMENTS = "Please provide both the file path and the word to search";
     public static final String ERROR_INVALID_FILE = "File path is incorrect or file doesn't exist";
@@ -15,4 +14,5 @@ public class WordTraceConstants {
     public static final String MESSAGE_INPUT_FILEPATH = "File Path : ";
     public static final String MESSAGE_PROCESSING = "Processing....";
     public static final String MESSAGE_SEARCH_WORD = "Word to search : ";
+
 }
