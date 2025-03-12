@@ -14,13 +14,15 @@ public class InputValidator {
      * @param args
      * @return
      */
-    public String validateArguments(String[] args) {
+    boolean validateArguments(String[] args) {
         if (args.length < 2) {
-            return WordTraceConstants.ERROR_INSUFFICIENT_ARGUMENTS;
+            System.out.println(WordTraceConstants.ERROR_INSUFFICIENT_ARGUMENTS);
+            return false;
         } else if (args.length > 2) {
-            return WordTraceConstants.ERROR_MORE_ARGUMENTS;
+            System.out.println(WordTraceConstants.ERROR_MORE_ARGUMENTS);
+            return false;
         }
-        return "";
+        return true;
     }
 
     /**
@@ -29,12 +31,13 @@ public class InputValidator {
      * @param inputFilePath
      * @return
      */
-    public String validateFileExistence(String inputFilePath) {
+    boolean validateFileExistence(String inputFilePath) {
         File file = new File(inputFilePath);
         if (!file.exists() || !file.isFile()) {
-            return WordTraceConstants.ERROR_INVALID_FILE;
+            System.out.println(WordTraceConstants.ERROR_INVALID_FILE);
+            return false;
         }
-        return "";
+        return true;
     }
 
     /**
@@ -43,11 +46,12 @@ public class InputValidator {
      * @param inputFilePath
      * @return
      */
-    public String validateFileType(String inputFilePath) {
+    boolean validateFileType(String inputFilePath) {
         if (!inputFilePath.endsWith(WordTraceConstants.FILE_EXTENSION_TXT) && !inputFilePath.endsWith(WordTraceConstants.FILE_EXTENSION_JSON)) {
-            return WordTraceConstants.INVALID_FILE_TYPE;
+            System.out.println(WordTraceConstants.INVALID_FILE_TYPE);
+            return false;
         }
-        return "";
+        return true;
     }
 
     /**
@@ -56,14 +60,13 @@ public class InputValidator {
      * @param args
      * @return
      */
-    public String validateInputs(String[] args) {
-        String message;
-        message = validateArguments(args);
-        if (!message.isEmpty()) return message;
-        message = validateFileExistence(args[0]);
-        if (!message.isEmpty()) return message;
-        message = validateFileType(args[0]);
-        if (!message.isEmpty()) return message;
-        return "";
+    public boolean validateInputs(String[] args) {
+        if (!validateArguments(args)) {
+            return false;
+        }
+        if (!validateFileExistence(args[0])) {
+            return false;
+        }
+        return validateFileType(args[0]);
     }
 }

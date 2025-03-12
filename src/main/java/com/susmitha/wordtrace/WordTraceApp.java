@@ -14,9 +14,7 @@ public class WordTraceApp {
      */
     public static void main(String[] args) {
         InputValidator inputValidator = new InputValidator();
-        String validationMessage = inputValidator.validateInputs(args);
-        if (!validationMessage.isEmpty()) {
-            System.out.println(validationMessage);
+        if (!inputValidator.validateInputs(args)) {
             return;
         }
         String inputFilePath = args[0];
