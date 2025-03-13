@@ -1,7 +1,8 @@
 package com.susmitha.wordtrace;
 
 import constants.wordtraceconstants.WordTraceConstants;
-import inputvalidator.InputValidator;
+import validator.InputValidator;
+import fileprocessing.FileProcessor;
 
 /**
  * Main entry point for the WordTrace Application
@@ -9,8 +10,9 @@ import inputvalidator.InputValidator;
 public class WordTraceApp {
     /**
      * main method to execute the application
+     * This class initiates the process of input validation
      *
-     * @param args
+     * @param args command line arguments where args[0] is the file path and args[1] is the word to search in the file
      */
     public static void main(String[] args) {
         InputValidator inputValidator = new InputValidator();
@@ -23,5 +25,7 @@ public class WordTraceApp {
         System.out.println(WordTraceConstants.MESSAGE_SEARCH_WORD + searchWord);
         System.out.println(WordTraceConstants.MESSAGE_FILEPATH_CORRECT);
         System.out.println(WordTraceConstants.MESSAGE_PROCESSING);
+        int wordCount = FileProcessor.countWordOccurrences(inputFilePath, searchWord);
+        System.out.println(WordTraceConstants.MESSAGE_COUNT_WORD);
     }
 }

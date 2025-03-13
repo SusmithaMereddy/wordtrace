@@ -14,4 +14,6 @@ public class WordTraceConstants {
     public static final String MESSAGE_INPUT_FILEPATH = "File Path : ";
     public static final String MESSAGE_PROCESSING = "Processing....";
     public static final String MESSAGE_SEARCH_WORD = "Word to search : ";
+    public static final String MESSAGE_COUNT_WORD = "The word '" + "searchWord" + "' occured '" + "%d" + "' times in the file %s.";
+
 }
