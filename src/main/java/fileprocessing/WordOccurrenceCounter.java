@@ -22,7 +22,7 @@ public class WordOccurrenceCounter {
      * @return the number of times the word appears in the file
      */
     public int countWordOccurences(String inputFilePath, String searchWord) {
-        int countSearchWord = 0;
+        int searchedWordCount = 0;
         try {
             String fileContents = Files.readString(Paths.get(inputFilePath));
             //StringTokenizer to split the words based on delimeter.
@@ -30,12 +30,12 @@ public class WordOccurrenceCounter {
             while (stringTokenizer.hasMoreTokens()) {
                 String token = stringTokenizer.nextToken().replaceAll(WordTraceConstants.WORD_CLEANUP_REGEX, WordTraceConstants.EMPTY_STRING);
                 if (token.equalsIgnoreCase(searchWord)) {
-                    countSearchWord++;
+                    searchedWordCount++;
                 }
             }
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
-        return countSearchWord;
+        return searchedWordCount;
     }
 }
