@@ -24,8 +24,8 @@ public class WordTraceApp {
         String inputFilePath = args[0];
         String searchWord = args[1];
         //Creating object for File class
-        File file = new File(inputFilePath);
-        String inputFileName = file.getName();
+        File inputFile = new File(inputFilePath);
+        String inputFileName = inputFile.getName();
         System.out.println(
                 WordTraceConstants.MESSAGE_INPUT_FILEPATH + inputFilePath + "\n" +
                         WordTraceConstants.MESSAGE_SEARCH_WORD + searchWord + "\n" +
