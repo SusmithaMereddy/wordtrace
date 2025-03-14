@@ -5,10 +5,12 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.StringTokenizer;
 
+import constants.wordtraceconstants.WordTraceConstants;
+
 /**
  * This class provides functionality to read a file and count the occurrences of a specific word in a file
  */
-public class WordCounter {
+public class WordOccurrenceCounter {
     /**
      * Counts the occurences of specific word in a file
      * This method reads the entire file contents as a string using Files.readString()
@@ -20,20 +22,20 @@ public class WordCounter {
      * @return the number of times the word appears in the file
      */
     public int countWordOccurences(String inputFilePath, String searchWord) {
-        int searchWordCount = 0;
+        int countSearchWord = 0;
         try {
             String fileContents = Files.readString(Paths.get(inputFilePath));
             //StringTokenizer to split the words based on delimeter.
-            StringTokenizer stringTokenizer = new StringTokenizer(fileContents, " ");
+            StringTokenizer stringTokenizer = new StringTokenizer(fileContents, WordTraceConstants.DELIMETER);
             while (stringTokenizer.hasMoreTokens()) {
-                String token = stringTokenizer.nextToken().replaceAll("[^a-zA-Z0-9]", "");
+                String token = stringTokenizer.nextToken().replaceAll(WordTraceConstants.WORD_CLEANUP_REGEX, WordTraceConstants.EMPTY_STRING);
                 if (token.equalsIgnoreCase(searchWord)) {
-                    searchWordCount++;
+                    countSearchWord++;
                 }
             }
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
-        return searchWordCount;
+        return countSearchWord;
     }
 }

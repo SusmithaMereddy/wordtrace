@@ -1,7 +1,7 @@
 package com.susmitha.wordtrace;
 
 import constants.wordtraceconstants.WordTraceConstants;
-import fileprocessing.WordCounter;
+import fileprocessing.WordOccurrenceCounter;
 import validator.InputValidator;
 
 import java.io.File;
@@ -33,7 +33,7 @@ public class WordTraceApp {
                         WordTraceConstants.MESSAGE_PROCESSING
         );
         //Creating object for wordCounter class
-        WordCounter wordCounter = new WordCounter();
+        WordOccurrenceCounter wordCounter = new WordOccurrenceCounter();
         int count = wordCounter.countWordOccurences(inputFilePath, searchWord);
         if (count > 0) {
             System.out.printf(String.format(WordTraceConstants.MESSAGE_COUNT_WORD, searchWord, count, inputFileName));

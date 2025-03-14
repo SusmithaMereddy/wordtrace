@@ -4,8 +4,10 @@ package constants.wordtraceconstants;
  * This class defines constant values used across the WordTrace Application
  */
 public class WordTraceConstants {
+    public static final String DELIMETER = "\t\n ";
+    public static final String EMPTY_STRING = "";
     public static final String ERROR_INSUFFICIENT_ARGUMENTS = "Please provide both the file path and the word to search";
-    public static final String ERROR_INVALID_FILE = "File path is incorrect or file doesn't exist";
+    public static final String ERROR_INVALID_FILE = "File path is incorrect or file doesn't exist. Please provide valid file path";
     public static final String ERROR_MORE_ARGUMENTS = "Please provide only the file path and the word to be searched";
     public static final String FILE_EXTENSION_JSON = ".json";
     public static final String FILE_EXTENSION_TXT = ".txt";
@@ -16,4 +18,5 @@ public class WordTraceConstants {
     public static final String MESSAGE_PROCESSING = "Processing....";
     public static final String MESSAGE_SEARCH_WORD = "Word to search : ";
     public static final String MESSAGE_WORD_NOT_FOUND = "The word '%s' is not found in the file '%s'";
+    public static final String WORD_CLEANUP_REGEX = "[^a-zA-Z0-9]";
 }
