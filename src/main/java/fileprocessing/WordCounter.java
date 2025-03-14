@@ -20,7 +20,7 @@ public class WordCounter {
      * @return the number of times the word appears in the file
      */
     public int countWordOccurences(String inputFilePath, String searchWord) {
-        int wordCount = 0;
+        int searchWordCount = 0;
         try {
             String fileContents = Files.readString(Paths.get(inputFilePath));
             //StringTokenizer to split the words based on delimeter.
@@ -28,12 +28,12 @@ public class WordCounter {
             while (stringTokenizer.hasMoreTokens()) {
                 String token = stringTokenizer.nextToken().replaceAll("[^a-zA-Z0-9]", "");
                 if (token.equalsIgnoreCase(searchWord)) {
-                    wordCount++;
+                    searchWordCount++;
                 }
             }
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
-        return wordCount;
+        return searchWordCount;
     }
 }
