@@ -1,8 +1,10 @@
 package com.susmitha.wordtrace;
 
 import constants.wordtraceconstants.WordTraceConstants;
+import fileprocessing.WordCounter;
 import validator.InputValidator;
-import fileprocessing.FileProcessor;
+
+import java.io.File;
 
 /**
  * Main entry point for the WordTrace Application
@@ -21,11 +23,22 @@ public class WordTraceApp {
         }
         String inputFilePath = args[0];
         String searchWord = args[1];
-        System.out.println(WordTraceConstants.MESSAGE_INPUT_FILEPATH + inputFilePath);
-        System.out.println(WordTraceConstants.MESSAGE_SEARCH_WORD + searchWord);
-        System.out.println(WordTraceConstants.MESSAGE_FILEPATH_CORRECT);
-        System.out.println(WordTraceConstants.MESSAGE_PROCESSING);
-        int wordCount = FileProcessor.countWordOccurrences(inputFilePath, searchWord);
-        System.out.println(WordTraceConstants.MESSAGE_COUNT_WORD);
+        //Creating object for File class
+        File file = new File(inputFilePath);
+        String inputFileName = file.getName();
+        System.out.println(
+                WordTraceConstants.MESSAGE_INPUT_FILEPATH + inputFilePath + "\n" +
+                        WordTraceConstants.MESSAGE_SEARCH_WORD + searchWord + "\n" +
+                        WordTraceConstants.MESSAGE_FILEPATH_CORRECT + "\n" +
+                        WordTraceConstants.MESSAGE_PROCESSING
+        );
+        //Creating object for wordCounter class
+        WordCounter wordCounter = new WordCounter();
+        int count = wordCounter.countWordOccurences(inputFilePath, searchWord);
+        if (count > 0) {
+            System.out.printf(String.format(WordTraceConstants.MESSAGE_COUNT_WORD, searchWord, count, inputFileName));
+        } else {
+            System.out.printf(String.format(WordTraceConstants.MESSAGE_WORD_NOT_FOUND, searchWord, inputFileName));
+        }
     }
 }
