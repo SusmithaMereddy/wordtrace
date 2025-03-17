@@ -33,8 +33,8 @@ public class WordTraceApp {
                         WordTraceConstants.MESSAGE_PROCESSING
         );
         //Creating object for wordCounter class
-        WordOccurrenceCounter wordCounter = new WordOccurrenceCounter();
-        int count = wordCounter.countWordOccurrences(inputFilePath, searchWord);
+        WordOccurrenceCounter wordOccurrenceCounter = new WordOccurrenceCounter();
+        int count = wordOccurrenceCounter.countWordOccurrences(inputFilePath, searchWord);
         if (count > 0) {
             System.out.printf(String.format(WordTraceConstants.MESSAGE_COUNT_WORD, searchWord, count, inputFileName));
         } else {
