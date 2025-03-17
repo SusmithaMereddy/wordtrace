@@ -20,6 +20,7 @@ public class WordTraceApp {
     public static void main(String[] args) {
         InputValidator inputValidator = new InputValidator();
         if (!inputValidator.validateInputs(args)) {
+            DataBaseConnectionManager.insertAuditLog(args.length > 0 ? args[0] : null, args.length > 1 ? args[1] : null, "error", WordTraceConstants.COUNT_ZERO, WordTraceConstants.ERROR_MESSAGE_INVALID_INPUTS);
             return;
         }
         String inputFilePath = args[0];
