@@ -32,8 +32,8 @@ public class InputValidator {
      * @return true if the file exists and is a normal file
      */
     private boolean doesFileExists(String inputFilePath) {
-        File file = new File(inputFilePath);
-        if (!file.exists() || !file.isFile()) {
+        File inputFile = new File(inputFilePath);
+        if (!inputFile.exists() || !inputFile.isFile()) {
             System.out.println(WordTraceConstants.ERROR_INVALID_FILE);
             return false;
         }
