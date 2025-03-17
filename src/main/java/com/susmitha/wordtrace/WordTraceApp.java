@@ -34,11 +34,11 @@ public class WordTraceApp {
         );
         //Creating object for wordCounter class
         WordOccurrenceCounter wordCounter = new WordOccurrenceCounter();
-        int count = wordCounter.countWordOccurences(inputFilePath, searchWord);
+        int count = wordCounter.countWordOccurrences(inputFilePath, searchWord);
         if (count > 0) {
             System.out.printf(String.format(WordTraceConstants.MESSAGE_COUNT_WORD, searchWord, count, inputFileName));
         } else {
-            System.out.printf(String.format(WordTraceConstants.MESSAGE_WORD_NOT_FOUND, searchWord, inputFileName));
+            System.out.printf(String.format(WordTraceConstants.KEY_WORD_NOT_FOUND, searchWord, inputFileName));
         }
     }
 }

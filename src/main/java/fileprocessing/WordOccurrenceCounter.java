@@ -12,23 +12,23 @@ import constants.wordtraceconstants.WordTraceConstants;
  */
 public class WordOccurrenceCounter {
     /**
-     * Counts the occurences of specific word in a file
+     * Counts the occurrences of specific word in a file
      * This method reads the entire file contents as a string using Files.readString()
-     * It then uses StringTokenizer to split the string into tokens at a specified delimer
+     * It then uses StringTokenizer to split the string into tokens at a specified delimeter
      * Checks if the token is matching with the delimeter and returns count
      *
      * @param inputFilePath the path of the file to read
      * @param searchWord    the word to search for in the file
      * @return the number of times the word appears in the file
      */
-    public int countWordOccurences(String inputFilePath, String searchWord) {
+    public int countWordOccurrences(String inputFilePath, String searchWord) {
         int searchedWordCount = 0;
         try {
             String fileContents = Files.readString(Paths.get(inputFilePath));
             //StringTokenizer to split the words based on delimeter.
             StringTokenizer stringTokenizer = new StringTokenizer(fileContents, WordTraceConstants.DELIMETER);
             while (stringTokenizer.hasMoreTokens()) {
-                String token = stringTokenizer.nextToken().replaceAll(WordTraceConstants.WORD_CLEANUP_REGEX, WordTraceConstants.EMPTY_STRING);
+                String token = stringTokenizer.nextToken().replaceAll(WordTraceConstants.TOKENIZER_DELIMETER_REGEX_PATTERN, WordTraceConstants.EMPTY_STRING);
                 if (token.equalsIgnoreCase(searchWord)) {
                     searchedWordCount++;
                 }

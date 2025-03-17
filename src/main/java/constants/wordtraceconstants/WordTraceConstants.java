@@ -17,6 +17,6 @@ public class WordTraceConstants {
     public static final String MESSAGE_INPUT_FILEPATH = "Input file Path : ";
     public static final String MESSAGE_PROCESSING = "Processing....";
     public static final String MESSAGE_SEARCH_WORD = "Word to search : ";
-    public static final String MESSAGE_WORD_NOT_FOUND = "The word '%s' is not found in the file '%s'";
-    public static final String WORD_CLEANUP_REGEX = "[^a-zA-Z0-9]";
+    public static final String KEY_WORD_NOT_FOUND = "The word '%s' is not found in the file '%s'";
+    public static final String TOKENIZER_DELIMETER_REGEX_PATTERN = "[^a-zA-Z0-9]";
 }
