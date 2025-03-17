@@ -3,6 +3,7 @@ package com.susmitha.wordtrace;
 import constants.wordtraceconstants.WordTraceConstants;
 import fileprocessing.WordOccurrenceCounter;
 import validator.InputValidator;
+import jdbcConnection.DataBaseConnectionManager;
 
 import java.io.File;
 
@@ -36,9 +37,11 @@ public class WordTraceApp {
         WordOccurrenceCounter wordOccurrenceCounter = new WordOccurrenceCounter();
         int count = wordOccurrenceCounter.countWordOccurrences(inputFilePath, searchWord);
         if (count > 0) {
-            System.out.printf(String.format(WordTraceConstants.MESSAGE_COUNT_WORD, searchWord, count, inputFileName));
+            System.out.printf((WordTraceConstants.MESSAGE_COUNT_WORD) + "%n", searchWord, count, inputFileName);
+            DataBaseConnectionManager.insertAuditLog(inputFilePath, searchWord, WordTraceConstants.MESSAGE_SUCCESS, count, WordTraceConstants.EMPTY_STRING);
         } else {
-            System.out.printf(String.format(WordTraceConstants.KEY_WORD_NOT_FOUND, searchWord, inputFileName));
+            System.out.printf((WordTraceConstants.KEY_WORD_NOT_FOUND) + "%n", searchWord, inputFileName);
+            DataBaseConnectionManager.insertAuditLog(inputFilePath, searchWord, WordTraceConstants.MESSAGE_SUCCESS, WordTraceConstants.COUNT_ZERO, WordTraceConstants.ERROR_MESSAGE_WORD_NOT_FOUND);
         }
     }
 }
