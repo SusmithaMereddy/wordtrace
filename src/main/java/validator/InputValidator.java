@@ -32,9 +32,13 @@ public class InputValidator {
      * @return true if the file exists and is a normal file
      */
     private boolean doesFileExists(String inputFilePath) {
-        File file = new File(inputFilePath);
-        if (!file.exists() || !file.isFile()) {
-            System.out.println(WordTraceConstants.ERROR_INVALID_FILE);
+        File inputFile = new File(inputFilePath);
+        if (!inputFile.exists()) {
+            System.out.println(WordTraceConstants.ERROR_FILE_DOES_NOT_EXIST);
+            return false;
+        }
+        if (!inputFile.isFile()) {
+            System.out.println(WordTraceConstants.ERROR_INVALID_FILE_PATH);
             return false;
         }
         return true;
@@ -55,12 +59,30 @@ public class InputValidator {
     }
 
     /**
+     * Check if the input file is empty
+     *
+     * @param inputFilePath
+     * @return
+     */
+    private boolean isFileEmpty(String inputFilePath) {
+        File inputFile = new File(inputFilePath);
+        if (inputFile.length() == 0) {
+            System.out.println("File is Empty");
+            return true;
+        }
+        return false;
+    }
+
+    /**
      * validates all input arguments and returns an error message if any validation fails
      *
      * @param args The array of input arguments, where args[0] is the file path and args[1] is the word we are searching for
      * @return true if all validations pass
      */
     public boolean validateInputs(String[] args) {
-        return hasValidArguments(args) && doesFileExists(args[0]) && hasValidFileType(args[0]);
+        if (!hasValidArguments(args) || !doesFileExists(args[0]) || !hasValidFileType(args[0])) {
+            return false;
+        }
+        return !isFileEmpty(args[0]);
     }
 }

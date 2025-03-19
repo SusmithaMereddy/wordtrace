@@ -2,6 +2,7 @@ package com.susmitha.wordtrace;
 
 import constants.wordtraceconstants.WordTraceConstants;
 import validator.InputValidator;
+
 /**
  * Main entry point for the WordTrace Application
  */
@@ -19,9 +20,11 @@ public class WordTraceApp {
         }
         String inputFilePath = args[0];
         String searchWord = args[1];
-        System.out.println(WordTraceConstants.MESSAGE_INPUT_FILEPATH + inputFilePath);
-        System.out.println(WordTraceConstants.MESSAGE_SEARCH_WORD + searchWord);
-        System.out.println(WordTraceConstants.MESSAGE_FILEPATH_CORRECT);
-        System.out.println(WordTraceConstants.MESSAGE_PROCESSING);
+        System.out.println(
+                WordTraceConstants.MESSAGE_INPUT_FILEPATH + inputFilePath + "\n" +
+                        WordTraceConstants.MESSAGE_SEARCH_WORD + searchWord + "\n" +
+                        WordTraceConstants.MESSAGE_FILEPATH_CORRECT + "\n" +
+                        WordTraceConstants.MESSAGE_PROCESSING
+        );
     }
 }
