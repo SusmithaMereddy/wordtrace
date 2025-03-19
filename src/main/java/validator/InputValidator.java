@@ -1,6 +1,7 @@
 package validator;
 
 import constants.wordtraceconstants.WordTraceConstants;
+
 import java.io.File;
 
 /**
@@ -30,7 +31,7 @@ public class InputValidator {
      * @param inputFilePath stores the path of the file
      * @return true if the file exists and is a normal file
      */
-    private boolean doesFileExists(String inputFilePath) {
+    private boolean isValidFilePath(String inputFilePath) {
         File inputFile = new File(inputFilePath);
         if (!inputFile.exists()) {
             System.out.println(WordTraceConstants.ERROR_FILE_DOES_NOT_EXIST);
@@ -79,7 +80,7 @@ public class InputValidator {
      * @return true if all validations pass
      */
     public boolean validateInputs(String[] args) {
-        if (!hasValidArguments(args) || !doesFileExists(args[0]) || !hasValidFileType(args[0])) {
+        if (!hasValidArguments(args) || !isValidFilePath(args[0]) || !hasValidFileType(args[0])) {
             return false;
         }
         return !isFileEmpty(args[0]);
