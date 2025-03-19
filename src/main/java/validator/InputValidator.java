@@ -1,7 +1,6 @@
 package validator;
 
 import constants.wordtraceconstants.WordTraceConstants;
-
 import java.io.File;
 
 /**
