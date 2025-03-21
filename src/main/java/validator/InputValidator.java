@@ -9,58 +9,45 @@ import java.io.File;
  */
 public class InputValidator {
     /**
-     * Validates that exactly two arguments are provided
+     * Ensures exactly two arguments are passed
+     * verifies if the file exists and is a valid file
+     * checks whether the file has valid extension
+     * ensures that the file is not empty
      *
-     * @param args array of input arguments where args[0] is the file path and args[1] is the search word
-     * @return
+     * @param args inputFilePath and searchWord
+     * @return errorMessage if any of the checks fail , null otherwise (indicating valid inputs)
      */
-    private boolean hasValidArguments(String[] args) {
+    public String validateInputs(String[] args) {
         if (args.length < 2) {
             System.out.println(WordTraceConstants.ERROR_INSUFFICIENT_ARGUMENTS);
-            return false;
-        } else if (args.length > 2) {
+            return WordTraceConstants.ERROR_INSUFFICIENT_ARGUMENTS;
+        }
+        if (args.length > 2) {
             System.out.println(WordTraceConstants.ERROR_MORE_ARGUMENTS);
-            return false;
+            return WordTraceConstants.ERROR_MORE_ARGUMENTS;
         }
-        return true;
-    }
-
-    /**
-     * validates that the provided file path exists and is a valid file
-     *
-     * @param inputFilePath stores the path of the file
-     * @return true if the file exists and is a normal file
-     */
-    private boolean doesFileExists(String inputFilePath) {
+        String inputFilePath = args[0];
         File inputFile = new File(inputFilePath);
-        if (!inputFile.exists() || !inputFile.isFile()) {
-            System.out.println(WordTraceConstants.ERROR_INVALID_FILE);
-            return false;
+        if (!inputFile.exists()) {
+            System.out.println(WordTraceConstants.ERROR_FILE_DOES_NOT_EXIST);
+            return WordTraceConstants.ERROR_FILE_DOES_NOT_EXIST;
         }
-        return true;
-    }
-
-    /**
-     * Validates that the file has an accepted extension (.txt or .json)
-     *
-     * @param inputFilePath Stores the file path
-     * @return true if the file is in the .txt or .json format
-     */
-    private boolean hasValidFileType(String inputFilePath) {
-        if (!inputFilePath.endsWith(WordTraceConstants.FILE_EXTENSION_TXT) && !inputFilePath.endsWith(WordTraceConstants.FILE_EXTENSION_JSON)) {
+        if (!inputFile.isFile()) {
+            System.out.println(WordTraceConstants.ERROR_INVALID_FILE_PATH);
+            return WordTraceConstants.ERROR_INVALID_FILE_PATH;
+        }
+        if (!hasValidFileType(inputFilePath)) {
             System.out.println(WordTraceConstants.INVALID_FILE_TYPE);
-            return false;
+            return WordTraceConstants.INVALID_FILE_TYPE;
         }
-        return true;
+        if (inputFile.length() == 0) {
+            System.out.println(WordTraceConstants.MESSAGE_EMPTY_FILE);
+            return WordTraceConstants.MESSAGE_EMPTY_FILE;
+        }
+        return null;
     }
 
-    /**
-     * validates all input arguments and returns an error message if any validation fails
-     *
-     * @param args The array of input arguments, where args[0] is the file path and args[1] is the word we are searching for
-     * @return true if all validations pass
-     */
-    public boolean validateInputs(String[] args) {
-        return hasValidArguments(args) && doesFileExists(args[0]) && hasValidFileType(args[0]);
+    private boolean hasValidFileType(String inputFilePath) {
+        return !inputFilePath.endsWith(WordTraceConstants.FILE_EXTENSION_TXT) || !inputFilePath.endsWith(WordTraceConstants.FILE_EXTENSION_JSON);
     }
 }
