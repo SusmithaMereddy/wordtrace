@@ -6,6 +6,7 @@ import java.nio.file.Paths;
 import java.util.StringTokenizer;
 
 import constants.wordtraceconstants.WordTraceConstants;
+import databaseConstants.DatabaseConstants;
 
 /**
  * This class provides functionality to read a file and count the occurrences of a specific word in a file
@@ -28,7 +29,7 @@ public class WordOccurrenceCounter {
             //StringTokenizer to split the words based on delimeter.
             StringTokenizer stringTokenizer = new StringTokenizer(fileContents, WordTraceConstants.DELIMETER);
             while (stringTokenizer.hasMoreTokens()) {
-                String token = stringTokenizer.nextToken().replaceAll(WordTraceConstants.TOKENIZER_DELIMETER_REGEX_PATTERN, WordTraceConstants.EMPTY_STRING);
+                String token = stringTokenizer.nextToken().replaceAll(WordTraceConstants.TOKENIZER_DELIMETER_REGEX_PATTERN, DatabaseConstants.EMPTY_STRING);
                 if (token.equalsIgnoreCase(searchWord)) {
                     searchedWordCount++;
                 }

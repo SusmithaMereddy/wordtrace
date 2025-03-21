@@ -2,7 +2,11 @@ package com.susmitha.wordtrace;
 
 import constants.wordtraceconstants.WordTraceConstants;
 import fileprocessing.WordOccurrenceCounter;
+import util.AuditEntryUtil;
 import validator.InputValidator;
+import repository.WordTraceAuditRepository;
+import databaseConstants.DatabaseConstants;
+import auditLogEntry.AuditLogEntry;
 
 import java.io.File;
 
@@ -10,6 +14,8 @@ import java.io.File;
  * Main entry point for the WordTrace Application
  */
 public class WordTraceApp {
+    AuditLogEntry auditLogEntry;
+
     /**
      * main method to execute the application
      * This class initiates the process of input validation
@@ -18,7 +24,12 @@ public class WordTraceApp {
      */
     public static void main(String[] args) {
         InputValidator inputValidator = new InputValidator();
-        if (!inputValidator.validateInputs(args)) {
+        AuditEntryUtil auditEntryUtil = new AuditEntryUtil();
+        WordTraceAuditRepository wordTraceAuditRepository = new WordTraceAuditRepository();
+        String validationError = inputValidator.validateInputs(args);
+        if (validationError != null) {
+            wordTraceAuditRepository.insertAuditLog(auditEntryUtil.setAuditEntry(args.length > 0 ? args[0] : null,
+                    args.length > 1 ? args[1] : null, "error", DatabaseConstants.COUNT_ZERO, validationError));
             return;
         }
         String inputFilePath = args[0];
@@ -36,9 +47,11 @@ public class WordTraceApp {
         WordOccurrenceCounter wordOccurrenceCounter = new WordOccurrenceCounter();
         int count = wordOccurrenceCounter.countWordOccurrences(inputFilePath, searchWord);
         if (count > 0) {
-            System.out.printf(String.format(WordTraceConstants.MESSAGE_COUNT_WORD, searchWord, count, inputFileName));
+            System.out.printf((WordTraceConstants.MESSAGE_COUNT_WORD), searchWord, count, inputFileName);
+            wordTraceAuditRepository.insertAuditLog(auditEntryUtil.setAuditEntry(inputFilePath, searchWord, DatabaseConstants.MESSAGE_SUCCESS, count, DatabaseConstants.EMPTY_STRING));
         } else {
-            System.out.printf(String.format(WordTraceConstants.KEY_WORD_NOT_FOUND, searchWord, inputFileName));
+            System.out.printf((WordTraceConstants.KEY_WORD_NOT_FOUND) + WordTraceConstants.NEW_LINE, searchWord, inputFileName);
+            wordTraceAuditRepository.insertAuditLog(auditEntryUtil.setAuditEntry(inputFilePath, searchWord, DatabaseConstants.MESSAGE_SUCCESS, DatabaseConstants.COUNT_ZERO, DatabaseConstants.ERROR_MESSAGE_WORD_NOT_FOUND));
         }
     }
 }
