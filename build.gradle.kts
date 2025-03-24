@@ -12,7 +12,7 @@ repositories {
 tasks.jar {
     from(sourceSets.main.get().output)
     manifest {
-        attributes["Main-Class"] = "com.example.MainKt"
+        attributes["Main-Class"] = "com.susmitha.wordtrace.WordTraceApp"
     }
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     dependsOn(configurations.runtimeClasspath)
