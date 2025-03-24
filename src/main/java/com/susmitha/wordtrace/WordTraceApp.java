@@ -49,7 +49,7 @@ public class WordTraceApp {
         int count = wordOccurrenceCounter.countWordOccurrences(inputFilePath, searchWord);
         if (count > 0) {
             System.out.printf((WordTraceConstants.MESSAGE_COUNT_WORD), searchWord, count, inputFileName);
-            wordTraceAuditRepository.insertAuditLog(auditEntryUtil.setAuditEntry(inputFilePath, searchWord, DatabaseConstants.MESSAGE_SUCCESS, count, DatabaseConstants.EMPTY_STRING));
+            wordTraceAuditRepository.insertAuditLog(auditEntryUtil.setAuditEntry(inputFilePath, searchWord, DatabaseConstants.MESSAGE_SUCCESS, count, WordTraceConstants.EMPTY_STRING));
         } else {
             System.out.printf((WordTraceConstants.KEY_WORD_NOT_FOUND) + WordTraceConstants.NEW_LINE, searchWord, inputFileName);
             wordTraceAuditRepository.insertAuditLog(auditEntryUtil.setAuditEntry(inputFilePath, searchWord, DatabaseConstants.MESSAGE_SUCCESS, DatabaseConstants.COUNT_ZERO, DatabaseConstants.ERROR_MESSAGE_WORD_NOT_FOUND));

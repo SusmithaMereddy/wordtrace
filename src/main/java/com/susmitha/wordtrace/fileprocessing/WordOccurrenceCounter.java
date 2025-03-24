@@ -29,7 +29,7 @@ public class WordOccurrenceCounter {
             //StringTokenizer to split the words based on delimeter.
             StringTokenizer stringTokenizer = new StringTokenizer(fileContents, WordTraceConstants.DELIMETER);
             while (stringTokenizer.hasMoreTokens()) {
-                String token = stringTokenizer.nextToken().replaceAll(WordTraceConstants.TOKENIZER_DELIMETER_REGEX_PATTERN, DatabaseConstants.EMPTY_STRING);
+                String token = stringTokenizer.nextToken().replaceAll(WordTraceConstants.TOKENIZER_DELIMETER_REGEX_PATTERN, WordTraceConstants.EMPTY_STRING);
                 if (token.equalsIgnoreCase(searchWord)) {
                     searchedWordCount++;
                 }

@@ -48,6 +48,6 @@ public class InputValidator {
     }
 
     private boolean hasValidFileType(String inputFilePath) {
-        return !inputFilePath.endsWith(WordTraceConstants.FILE_EXTENSION_TXT) || !inputFilePath.endsWith(WordTraceConstants.FILE_EXTENSION_JSON);
+        return inputFilePath.endsWith(WordTraceConstants.FILE_EXTENSION_TXT) || inputFilePath.endsWith(WordTraceConstants.FILE_EXTENSION_JSON);
     }
 }
