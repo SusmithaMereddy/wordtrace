@@ -1,4 +1,4 @@
-package databaseConstants;
+package com.susmitha.wordtrace.databaseConstants;
 
 /**
  * defines constants used for database operations

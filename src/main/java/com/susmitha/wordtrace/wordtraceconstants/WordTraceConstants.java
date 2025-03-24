@@ -1,4 +1,4 @@
-package constants.wordtraceconstants;
+package com.susmitha.wordtrace.wordtraceconstants;
 
 /**
  * This class defines constant values used across the WordTrace Application

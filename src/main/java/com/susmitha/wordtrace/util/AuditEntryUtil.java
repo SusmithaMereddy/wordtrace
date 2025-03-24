@@ -1,6 +1,6 @@
-package util;
+package com.susmitha.wordtrace.util;
 
-import auditLogEntry.AuditLogEntry;
+import com.susmitha.wordtrace.auditLogEntry.AuditLogEntry;
 
 /**
  * utility class for creating and managing audit log entries

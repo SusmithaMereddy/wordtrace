@@ -1,12 +1,12 @@
 package com.susmitha.wordtrace;
 
-import constants.wordtraceconstants.WordTraceConstants;
-import fileprocessing.WordOccurrenceCounter;
-import util.AuditEntryUtil;
-import validator.InputValidator;
-import repository.WordTraceAuditRepository;
-import databaseConstants.DatabaseConstants;
-import auditLogEntry.AuditLogEntry;
+import com.susmitha.wordtrace.wordtraceconstants.WordTraceConstants;
+import com.susmitha.wordtrace.fileprocessing.WordOccurrenceCounter;
+import com.susmitha.wordtrace.util.AuditEntryUtil;
+import com.susmitha.wordtrace.validator.InputValidator;
+import com.susmitha.wordtrace.repository.WordTraceAuditRepository;
+import com.susmitha.wordtrace.databaseConstants.DatabaseConstants;
+import com.susmitha.wordtrace.auditLogEntry.AuditLogEntry;
 
 import java.io.File;
 
@@ -28,7 +28,8 @@ public class WordTraceApp {
         WordTraceAuditRepository wordTraceAuditRepository = new WordTraceAuditRepository();
         String validationError = inputValidator.validateInputs(args);
         if (validationError != null) {
-            wordTraceAuditRepository.insertAuditLog(auditEntryUtil.setAuditEntry(args.length > 0 ? args[0] : null,
+
+          wordTraceAuditRepository.insertAuditLog(auditEntryUtil.setAuditEntry(args.length > 0 ? args[0] : null,
                     args.length > 1 ? args[1] : null, "error", DatabaseConstants.COUNT_ZERO, validationError));
             return;
         }

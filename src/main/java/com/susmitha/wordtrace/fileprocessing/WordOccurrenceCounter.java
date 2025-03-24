@@ -1,12 +1,12 @@
-package fileprocessing;
+package com.susmitha.wordtrace.fileprocessing;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.StringTokenizer;
 
-import constants.wordtraceconstants.WordTraceConstants;
-import databaseConstants.DatabaseConstants;
+import com.susmitha.wordtrace.wordtraceconstants.WordTraceConstants;
+import com.susmitha.wordtrace.databaseConstants.DatabaseConstants;
 
 /**
  * This class provides functionality to read a file and count the occurrences of a specific word in a file

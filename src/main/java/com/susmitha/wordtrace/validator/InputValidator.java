@@ -1,6 +1,6 @@
-package validator;
+package com.susmitha.wordtrace.validator;
 
-import constants.wordtraceconstants.WordTraceConstants;
+import com.susmitha.wordtrace.wordtraceconstants.WordTraceConstants;
 
 import java.io.File;
 

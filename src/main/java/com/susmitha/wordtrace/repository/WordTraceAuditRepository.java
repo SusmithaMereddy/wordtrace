@@ -1,16 +1,15 @@
-package repository;
+package com.susmitha.wordtrace.repository;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.net.ConnectException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Properties;
 
-import auditLogEntry.AuditLogEntry;
-import databaseConstants.DatabaseConstants;
+import com.susmitha.wordtrace.auditLogEntry.AuditLogEntry;
+import com.susmitha.wordtrace.databaseConstants.DatabaseConstants;
 
 /**
  * Manages database connections and audit logging
