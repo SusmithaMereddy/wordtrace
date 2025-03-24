@@ -25,7 +25,7 @@ public class WordTraceAuditRepository {
      */
     Connection getConnection() {
         Properties properties = new Properties();
-        try (FileInputStream fileInputStream = new FileInputStream("C:/Susmitha/Internship/Poc1/wordtrace/src/main/resources/application.properties")) {
+        try (FileInputStream fileInputStream = new FileInputStream(DatabaseConstants.PROPERTIES_PATH)) {
             properties.load(fileInputStream);
         } catch (IOException iOException) {
             iOException.printStackTrace();

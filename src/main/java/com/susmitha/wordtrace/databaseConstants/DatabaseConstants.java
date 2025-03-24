@@ -11,4 +11,5 @@ public class DatabaseConstants {
     public static final String MESSAGE_LOG_FAIL = "Error logging audit entry";
     public static final String MESSAGE_LOG_SUCCESS = "Audit log inserted successfully";
     public static final String MESSAGE_SUCCESS = "Success";
+    public static final String PROPERTIES_PATH = "C:/Susmitha/Internship/Poc1/wordtrace/src/main/resources/application.properties";
 }

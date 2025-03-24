@@ -29,7 +29,7 @@ public class WordTraceApp {
         String validationError = inputValidator.validateInputs(args);
         if (validationError != null) {
 
-          wordTraceAuditRepository.insertAuditLog(auditEntryUtil.setAuditEntry(args.length > 0 ? args[0] : null,
+            wordTraceAuditRepository.insertAuditLog(auditEntryUtil.setAuditEntry(args.length > 0 ? args[0] : null,
                     args.length > 1 ? args[1] : null, "error", DatabaseConstants.COUNT_ZERO, validationError));
             return;
         }
